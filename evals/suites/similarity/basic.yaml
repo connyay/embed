@@ -1,0 +1,37 @@
+name: Basic Similarity Tests
+description: Test if semantically similar texts have high cosine similarity
+type: similarity
+
+tests:
+  - name: synonyms
+    pairs:
+      - ["happy", "joyful"]
+      - ["sad", "unhappy"]
+      - ["fast", "quick"]
+      - ["big", "large"]
+      - ["small", "tiny"]
+    expect: high
+
+  - name: antonyms
+    pairs:
+      - ["happy", "sad"]
+      - ["hot", "cold"]
+      - ["fast", "slow"]
+      - ["big", "small"]
+      - ["light", "dark"]
+    expect: low
+
+  - name: unrelated
+    pairs:
+      - ["banana", "democracy"]
+      - ["guitar", "thermodynamics"]
+      - ["purple", "economics"]
+      - ["elephant", "algebra"]
+    expect: low
+
+  - name: paraphrases
+    pairs:
+      - ["The cat sat on the mat", "A feline was resting on the rug"]
+      - ["I love programming", "Coding is my passion"]
+      - ["The weather is nice today", "It's a beautiful day outside"]
+    expect: high

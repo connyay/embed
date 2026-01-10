@@ -1,0 +1,43 @@
+name: Topic Clustering
+description: Test if embeddings cluster coherently by semantic topic
+type: clustering
+
+clusters:
+  - name: programming
+    texts:
+      - "Python list comprehension syntax"
+      - "JavaScript async await patterns"
+      - "Rust ownership and borrowing"
+      - "How to write unit tests"
+      - "Git branching strategies"
+      - "REST API design principles"
+
+  - name: cooking
+    texts:
+      - "How to make homemade pasta"
+      - "Best way to grill a steak"
+      - "Chocolate cake recipe"
+      - "Knife skills for beginners"
+      - "How to season a cast iron pan"
+      - "Making bread from scratch"
+
+  - name: sports
+    texts:
+      - "NBA playoffs bracket predictions"
+      - "Soccer World Cup highlights"
+      - "Tennis grand slam winners"
+      - "Marathon training schedule"
+      - "Golf swing techniques"
+      - "Swimming stroke improvement"
+
+  - name: science
+    texts:
+      - "Quantum mechanics fundamentals"
+      - "Climate change research findings"
+      - "DNA sequencing methods"
+      - "Black hole event horizons"
+      - "Vaccine development process"
+      - "Renewable energy technologies"
+
+metrics:
+  - silhouette_score

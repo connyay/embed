@@ -1,0 +1,47 @@
+name: QA Retrieval Tests
+description: Test retrieval accuracy - can we find the right doc for a query?
+type: retrieval
+
+corpus:
+  - id: python_lang
+    text: "Python is a high-level programming language known for its simple and readable syntax. It supports multiple programming paradigms including procedural, object-oriented, and functional programming."
+
+  - id: python_snake
+    text: "The python is a large non-venomous snake found in Africa, Asia, and Australia. Pythons kill their prey by constriction, squeezing until the animal can no longer breathe."
+
+  - id: javascript
+    text: "JavaScript is a programming language that runs in web browsers and Node.js. It is essential for building interactive websites and web applications."
+
+  - id: rust_lang
+    text: "Rust is a systems programming language focused on safety, concurrency, and performance. It prevents memory errors at compile time through its ownership system."
+
+  - id: machine_learning
+    text: "Machine learning is a subset of artificial intelligence that enables computers to learn from data without being explicitly programmed. Common techniques include neural networks and decision trees."
+
+  - id: cooking_pasta
+    text: "To cook pasta, bring a large pot of salted water to a boil. Add the pasta and cook until al dente, usually 8-12 minutes depending on the type."
+
+tests:
+  - query: "What programming language has simple syntax?"
+    relevant: [python_lang]
+    k: 1
+
+  - query: "Tell me about reptiles that squeeze their prey"
+    relevant: [python_snake]
+    k: 1
+
+  - query: "How do I build websites?"
+    relevant: [javascript]
+    k: 1
+
+  - query: "What language prevents memory errors?"
+    relevant: [rust_lang]
+    k: 1
+
+  - query: "How do computers learn from data?"
+    relevant: [machine_learning]
+    k: 1
+
+  - query: "How long should I boil spaghetti?"
+    relevant: [cooking_pasta]
+    k: 1

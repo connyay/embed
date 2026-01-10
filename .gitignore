@@ -22,3 +22,9 @@ target
 
 # Generated fly.io app configs
 .deploy/fly.io/apps/
+
+# Python cache files
+__pycache__/
+
+# Evaluation results
+evals/results/
