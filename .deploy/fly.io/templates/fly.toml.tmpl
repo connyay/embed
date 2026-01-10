@@ -1,0 +1,43 @@
+# Generated fly.toml for {{APP_NAME}}
+# Do not edit directly - regenerate with: make generate
+
+app = "{{APP_NAME}}"
+primary_region = "{{PRIMARY_REGION}}"
+
+[build]
+  image = "{{IMAGE}}"
+
+[env]
+  MODEL_ID = "{{MODEL_ID}}"
+
+[[mounts]]
+  source = "{{VOLUME_NAME}}"
+  destination = "/data"
+  initial_size = "{{VOLUME_SIZE}}gb"
+
+[[vm]]
+  size = "{{VM_SIZE}}"
+  memory = "{{MEMORY}}mb"
+
+[processes]
+  app = "--json-output {{EXTRA_ARGS}}"
+
+[http_service]
+  internal_port = {{INTERNAL_PORT}}
+  force_https = true
+  auto_stop_machines = "{{AUTO_STOP}}"
+  auto_start_machines = {{AUTO_START}}
+  min_machines_running = {{MIN_MACHINES}}
+  processes = ["app"]
+
+  [http_service.concurrency]
+    type = "requests"
+    hard_limit = 100
+    soft_limit = 80
+
+[[http_service.checks]]
+  grace_period = "60s"
+  interval = "30s"
+  method = "GET"
+  timeout = "10s"
+  path = "/health"
