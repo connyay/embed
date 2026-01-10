@@ -1,0 +1,79 @@
+name: Ambiguous Retrieval Tests
+description: Harder retrieval with semantic traps and ambiguous queries
+type: retrieval
+
+corpus:
+  - id: python_programming
+    text: "Python is a high-level programming language created by Guido van Rossum. It emphasizes code readability and supports multiple programming paradigms."
+
+  - id: python_snake
+    text: "Pythons are large non-venomous snakes found in Africa, Asia, and Australia. They are constrictors that squeeze their prey."
+
+  - id: apple_company
+    text: "Apple Inc. is a technology company headquartered in Cupertino, California. It designs and sells consumer electronics like the iPhone and Mac."
+
+  - id: apple_fruit
+    text: "Apples are a popular fruit that grow on trees. They come in varieties like Granny Smith, Fuji, and Honeycrisp."
+
+  - id: java_programming
+    text: "Java is an object-oriented programming language developed by Sun Microsystems. It runs on the Java Virtual Machine (JVM)."
+
+  - id: java_island
+    text: "Java is an island in Indonesia, home to over 140 million people. Jakarta, the capital of Indonesia, is located on Java."
+
+  - id: mercury_planet
+    text: "Mercury is the smallest planet in our solar system and the closest to the Sun. A year on Mercury lasts only 88 Earth days."
+
+  - id: mercury_element
+    text: "Mercury is a chemical element with symbol Hg. It is the only metal that is liquid at room temperature."
+
+  - id: rust_programming
+    text: "Rust is a systems programming language focused on memory safety without garbage collection. It uses ownership and borrowing concepts."
+
+  - id: rust_oxidation
+    text: "Rust is iron oxide that forms when iron reacts with oxygen and water. It appears as a reddish-brown coating on metal surfaces."
+
+tests:
+  # These should correctly identify the programming language
+  - query: "How do I write a for loop in Python?"
+    relevant: [python_programming]
+    k: 1
+
+  - query: "What company makes the iPhone?"
+    relevant: [apple_company]
+    k: 1
+
+  # These should correctly identify the non-tech meaning
+  - query: "What do pythons eat in the wild?"
+    relevant: [python_snake]
+    k: 1
+
+  - query: "How do I prevent rust on my car?"
+    relevant: [rust_oxidation]
+    k: 1
+
+  - query: "Is mercury toxic to humans?"
+    relevant: [mercury_element]
+    k: 1
+
+  # Harder: ambiguous queries where both meanings could apply
+  - query: "Tell me about Java"
+    relevant: [java_programming, java_island]
+    k: 2  # Should retrieve both in top 2
+
+  - query: "What is Rust good for?"
+    relevant: [rust_programming]
+    k: 1
+
+  - query: "Apple health benefits"
+    relevant: [apple_fruit]
+    k: 1
+
+  # Cross-domain: should NOT retrieve wrong domain
+  - query: "Best practices for writing clean Python code"
+    relevant: [python_programming]
+    k: 1
+
+  - query: "Where can I see pythons in a zoo?"
+    relevant: [python_snake]
+    k: 1

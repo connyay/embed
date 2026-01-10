@@ -1,0 +1,46 @@
+name: Edge Case Similarity Tests
+description: Challenging similarity tests - negations, context, ambiguity
+type: similarity
+
+tests:
+  - name: negations
+    pairs:
+      - ["I love this movie", "I don't love this movie"]
+      - ["The food was good", "The food was not good"]
+      - ["He is happy", "He is not happy"]
+    expect: medium  # Similar structure but opposite meaning
+
+  - name: same_word_different_context
+    pairs:
+      - ["The bank approved my loan", "I sat by the river bank"]
+      - ["She can play the bass guitar", "We caught a bass while fishing"]
+      - ["The bat flew out of the cave", "He swung the baseball bat"]
+    expect: low  # Same word, completely different meaning
+
+  - name: different_words_same_meaning
+    pairs:
+      - ["The movie was terrible", "The film was awful"]
+      - ["I'm exhausted", "I'm completely worn out"]
+      - ["That's hilarious", "That's incredibly funny"]
+    expect: high
+
+  - name: subtle_sentiment_difference
+    pairs:
+      - ["The service was acceptable", "The service was exceptional"]
+      - ["I'm fine with that", "I'm thrilled about that"]
+      - ["It works", "It works beautifully"]
+    expect: medium  # Same topic, different intensity
+
+  - name: question_vs_statement
+    pairs:
+      - ["Is Python a good language?", "Python is a good language"]
+      - ["Do you like coffee?", "I like coffee"]
+      - ["Can you help me?", "I need help"]
+    expect: high  # Same semantic content, different form
+
+  - name: formal_vs_informal
+    pairs:
+      - ["Please submit your application", "Just send your app in"]
+      - ["I would appreciate your assistance", "Can you help me out?"]
+      - ["The meeting is postponed", "Meeting's pushed back"]
+    expect: high

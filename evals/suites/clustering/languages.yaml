@@ -1,0 +1,43 @@
+name: Programming Language Clustering
+description: Test clustering of programming language discussions - should separate by language
+type: clustering
+
+clusters:
+  - name: python
+    texts:
+      - "How to use list comprehensions in Python"
+      - "Python decorators explained simply"
+      - "Managing Python virtual environments with venv"
+      - "Type hints in Python 3.10"
+      - "Python asyncio for concurrent programming"
+      - "Debugging Python with pdb"
+
+  - name: javascript
+    texts:
+      - "Understanding JavaScript promises and async/await"
+      - "React hooks vs class components"
+      - "Node.js event loop explained"
+      - "TypeScript generics tutorial"
+      - "JavaScript closure and scope"
+      - "Building REST APIs with Express.js"
+
+  - name: rust
+    texts:
+      - "Rust ownership and borrowing explained"
+      - "Pattern matching in Rust"
+      - "Building a CLI tool with Rust"
+      - "Rust lifetimes simplified"
+      - "Error handling with Result and Option in Rust"
+      - "Cargo workspace for multi-crate projects"
+
+  - name: go
+    texts:
+      - "Go goroutines and channels"
+      - "Writing tests in Go"
+      - "Go modules and dependency management"
+      - "Building microservices with Go"
+      - "Go interfaces explained"
+      - "Error handling patterns in Go"
+
+metrics:
+  - silhouette_score

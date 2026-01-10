@@ -1,0 +1,39 @@
+name: Multilingual Similarity Tests
+description: Test cross-lingual understanding (bge-m3 should excel here)
+type: similarity
+
+tests:
+  - name: english_spanish
+    pairs:
+      - ["Hello, how are you?", "Hola, como estas?"]
+      - ["The weather is beautiful today", "El clima esta hermoso hoy"]
+      - ["I love programming", "Me encanta programar"]
+    expect: high
+
+  - name: english_french
+    pairs:
+      - ["Good morning", "Bonjour"]
+      - ["Thank you very much", "Merci beaucoup"]
+      - ["The cat is sleeping", "Le chat dort"]
+    expect: high
+
+  - name: english_german
+    pairs:
+      - ["I am a software developer", "Ich bin ein Softwareentwickler"]
+      - ["The book is on the table", "Das Buch ist auf dem Tisch"]
+      - ["Where is the train station?", "Wo ist der Bahnhof?"]
+    expect: high
+
+  - name: english_chinese
+    pairs:
+      - ["Artificial intelligence", "人工智能"]
+      - ["Machine learning", "机器学习"]
+      - ["Natural language processing", "自然语言处理"]
+    expect: high
+
+  - name: cross_language_unrelated
+    pairs:
+      - ["I love pizza", "Das Wetter ist schön"]
+      - ["Programming is fun", "J'aime les chats"]
+      - ["The sky is blue", "我喜欢音乐"]
+    expect: low
