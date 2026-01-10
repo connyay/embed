@@ -90,7 +90,7 @@ fi
 # Deploy (longer timeout for first boot model download)
 echo ""
 echo "Deploying..."
-fly deploy --strategy rolling --wait-timeout 600
+fly deploy --strategy rolling --wait-timeout 600 --dns-checks=false
 
 echo ""
 echo "Deployed $APP_NAME successfully!"

@@ -27,8 +27,8 @@ impl Config {
     fn from_env() -> Self {
         let base_domain = env::var("EMBED_BASE_DOMAIN").unwrap_or_else(|_| "fly.dev".to_string());
 
-        // Use HTTPS for .fly.dev, HTTP for .internal
-        let use_https = !base_domain.ends_with(".internal");
+        // Use HTTPS for .fly.dev, HTTP for internal domains (.internal, .flycast)
+        let use_https = !base_domain.ends_with(".internal") && base_domain != "flycast";
 
         let connect_timeout = env::var("CONNECT_TIMEOUT_SECS")
             .ok()

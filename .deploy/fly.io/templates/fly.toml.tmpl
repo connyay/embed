@@ -24,7 +24,7 @@ primary_region = "{{PRIMARY_REGION}}"
 
 [http_service]
   internal_port = {{INTERNAL_PORT}}
-  force_https = true
+  force_https = false  # Required for Flycast (internal) access
   auto_stop_machines = "{{AUTO_STOP}}"
   auto_start_machines = {{AUTO_START}}
   min_machines_running = {{MIN_MACHINES}}

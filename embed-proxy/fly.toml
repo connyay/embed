@@ -5,7 +5,7 @@ primary_region = "ord"
 
 [env]
   RUST_LOG = "embed_proxy=info"
-  EMBED_BASE_DOMAIN = "fly.dev"
+  EMBED_BASE_DOMAIN = "flycast"
   REQUEST_TIMEOUT_SECS = "300"
   CONNECT_TIMEOUT_SECS = "10"
 
